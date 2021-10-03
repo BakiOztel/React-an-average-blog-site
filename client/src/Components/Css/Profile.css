@@ -1,0 +1,43 @@
+.Top_Row{
+    display: flex;
+    justify-content: center;
+    
+}
+.top_img{
+    position: relative;
+}
+.profile_img{
+    opacity: 1;
+    border-radius: 50%;
+    object-fit:cover;
+
+}
+.upload_img{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    background:rgba(0, 0, 0, 0.7);
+}
+.upload_img:hover{
+    opacity: 1;
+    transition: opacity 300ms linear;
+}
+/* Middle Row */
+
+.Profile_Stat{
+    display: flex;
+    justify-content:space-between;
+    width: 25%;
+}
+.Profile_Stat>div{
+    display: inline-block;
+}

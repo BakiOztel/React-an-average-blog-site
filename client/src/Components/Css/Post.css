@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+.Post{
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 400px;
+    
+    margin-left: 245px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+    
+}
+.Post_Top{
+    display: flex;
+    align-items:center;
+    padding: 5px;
+}
+.Post_Bottom{
+    max-height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-top-width: 0px;
+}
+.commonent{
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+}
+.comment_user_name{
+    font-weight: bolder;
+    height: 25px;
+}
+.comment_user_text{
+   font-weight: normal;
+   margin:0px 0px 0px 10px;
+   text-align: center;
+   height: 25px;
+
+}
+
+/* comment input  */
