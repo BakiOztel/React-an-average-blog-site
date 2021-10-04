@@ -1,24 +1,25 @@
 import { Button, message, Upload } from "antd";
-
+import { useSelector } from "react-redux";
+import { postProfileImgChange } from "../../../Api/postApi.js";
 const ProfileImg = () => {
+    const { data } = useSelector(state => state.userReducers);
+    const uploadImage = (options) => {
+        const { file } = options;
+        let formData = new FormData();
+        formData.append("avatar", file);
+        try {
+            postProfileImgChange(formData)
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
 
-    const props = {
-        beforeUpload: file => {
-            if (file.type !== 'image/png') {
-                message.error(`${file.name} is not a png file`);
-            }
-            return file.type === 'image/png' ? true : Upload.LIST_IGNORE;
-        },
-        onChange: info => {
-            console.log(info.fileList);
-        },
-    };
-
+    }
     return (
         <div className="top_img">
-            <img style={{ width: "250px", height: "250px" }} className="profile_img" src="https://picsum.photos/id/237/200/300" alt="" />
+            <img style={{ width: "250px", height: "250px" }} className="profile_img" src={`http://localhost:5000/${data.profileImg}`} alt="" />
             <div className="upload_img">
-                <Upload {...props}>
+                <Upload  multiple={false} showUploadList={false} customRequest={uploadImage} >
                     <Button size="large" className="upload_button" ghost={true} style={{ border: "0px" }}  >Change Image</Button>
                 </Upload>
             </div>
