@@ -9,3 +9,5 @@ export const createPost =async (data)=>  await axios.post("http://localhost:5000
 export const getAllPost= async ()=> await axios.get("http://localhost:5000/getPost");
 
 export const getProfilePost = async ()=> await axios.get("http://localhost:5000/getProfilePost");
+
+export const postProfileImgChange=async (data)=> await axios.post("http://localhost:5000/profileImgChange",data);
