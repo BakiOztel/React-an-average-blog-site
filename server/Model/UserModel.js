@@ -21,6 +21,10 @@ const UserSchema=mongoose.Schema({
         default:null,
         type:mongoose.Schema.Types.ObjectId,
         ref:"post"
-    }]
+    }],
+    profileImg:{
+        type:String,
+        default:null
+    }
 })
 module.exports=mongoose.model("users",UserSchema);

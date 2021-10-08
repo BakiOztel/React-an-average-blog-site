@@ -21,7 +21,7 @@
 .commonent{
     display: flex;
     align-items: center;
-    padding-left: 4px;
+    padding-left: 10px;
 }
 .comment_user_name{
     font-weight: bolder;
@@ -29,10 +29,12 @@
 }
 .comment_user_text{
    font-weight: normal;
-   margin:0px 0px 0px 10px;
+   margin:0px 0px 0px 5px;
    text-align: center;
    height: 25px;
 
 }
 
-/* comment input  */
+.explanation >.post_name{
+   font-weight: bold;
+}

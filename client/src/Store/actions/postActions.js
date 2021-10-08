@@ -6,7 +6,6 @@ export const FetchAllPost=() =>async (dispatch)=>{
           const data = await api.getAllPost();
           if(data.data){
               dispatch({type:"FETCH_ALL",payload:data.data});
-              console.log("getirirldi");
           }else{
               console.log("değer yok");
           }
@@ -25,7 +24,6 @@ export const FetchAllProfilePost=() =>async (dispatch)=>{
         const data = await api.getProfilePost();
         if(data.data){
             dispatch({type:"PROFILE_FETCH",payload:data.data});
-            console.log("getirirldi");
         }else{
             console.log("değer yok");
         }
@@ -43,7 +41,6 @@ export const createPost=(value)=> async (dispatch) =>{
         const {data}= await api.createPost(value);
         if(data){
             dispatch({type:"CREATE",payload:data});
-            console.log(data);
         }else{
             console.log("değer gelmedl");
         }

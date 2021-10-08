@@ -12,9 +12,14 @@ var storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage });
 
-router.post("/post",upload.single("image-file"),Auth,postControllers.createPost);
+router.post("/post",Auth,upload.single("image-file"),postControllers.createPost);
 
 router.get("/getPost",Auth,postControllers.getPost);
 
 router.get("/getProfilePost",Auth,postControllers.getProfilePost)
+
+router.post("/profileImgChange",Auth,upload.single("avatar"),postControllers.changeProfileImg)
+
+router.post("/postComment",Auth,postControllers.postComment);
+
 module.exports=router;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {CSSTransition,TransitionGroup} from "react-transition-group"
-import Deneme from "../../Deneme.js";
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import Card from "./Card.js";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchAllPost } from "../../../Store/actions/postActions.js";
 import { useEffect } from "react";
 
-const Style=styled.div`
+const Style = styled.div`
     width:800px;
     .transition-enter{
          opacity:0.01;
@@ -18,21 +18,21 @@ const Style=styled.div`
 }
 `;
 
-const Posts=()=>{
+const Posts = () => {
      const value = useSelector(state => state.postReducers);
      const dispatch = useDispatch();
      useEffect(() => {
-         dispatch(FetchAllPost());
+          dispatch(FetchAllPost());
      }, []);
-    
-    return(
-         <TransitionGroup component={Style}>
-            {value.post.map((post)=>(
-                 <CSSTransition timeout={500} classNames="transition">
-                    <Deneme key={post.img}  post={post} />
-                 </CSSTransition>
-            ))}
-         </TransitionGroup>
-    );
+
+     return (
+          <TransitionGroup component={Style}>
+               {value.post.map((post) => (
+                    <CSSTransition key={post.img} timeout={500} classNames="transition">
+                         <Card post={post} />
+                    </CSSTransition>
+               ))}
+          </TransitionGroup>
+     );
 }
 export default Posts;

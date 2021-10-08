@@ -4,7 +4,6 @@ import * as api from "../../Api/formApi.js";
 export const login = (value) => async (dispatch) => {
     try {
         const { data } = await api.login(value);
-        console.log(data.user);
         dispatch({ type: "LOGİN", payload: data.user });
     } catch (error) {
         dispatch({ type: "LOGİN_ERROR" });

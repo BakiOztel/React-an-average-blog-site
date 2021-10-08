@@ -26,8 +26,7 @@ exports.login = async (req, res, next) => {
       if (bcrypt.compareSync(req.body.password, user.password)) {
          const token = jwt.sign({ _id: user._id, name: user.userName }, process.env.JWT_KEY);
          res.cookie("x", token, { httpOnly: true });
-         res.cookie("user_IX", {_id:user._id}, { httpOnly: false });
-         res.status(200).json({ user: { _id:user._id,name: user.userName, realNameAndSurname: user.realNameAndSurname }, message: "giriş oldu" });
+         res.status(200).json({ user: { _id:user._id,name: user.userName, realNameAndSurname: user.realNameAndSurname,profileImg:user.profileImg }, message: "giriş oldu" });
       } else {
          res.send({ message: "wrong password" });
       }
@@ -43,7 +42,7 @@ exports.isLoggedIn = (req, res, next) => {
          next([401, "Invalid token"]);
       } 
       userModel.findById(decodedToken._id).then((user)=>{
-         res.status(200).json({ user: { name: user.userName, realNameAndSurname: user.realNameAndSurname }});
+         res.status(200).json({ user: { name: user.userName, realNameAndSurname: user.realNameAndSurname,profileImg:user.profileImg }});
       }).catch(error=>{
          console.log(error);
          res.status(401).json({message:"Hatalı"});

@@ -5,7 +5,7 @@ import { Carousel, Button } from 'antd';
 const CarouselComp = () => {
 
     return (
-        <Carousel  >
+        <Carousel autoplay  >
             <div>
                 <div className="carousel-img">
                     <img src="/img/1.png" alt="" />
