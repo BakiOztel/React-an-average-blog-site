@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Navbar from "./header";
 import Carousel from "./Carousel";
 import Footerr from "./Footer.js";
-import signUp from "./form/signUp.js"
+import SignUp from "./form/signUp.js"
 import Login from "./form/login.js";
 import MainMenu from "./Main/Main.js";
 import Profile from "./Profile/Profile.js";
-import { PrivateRouter } from "./AuthRouter/PrivateRouter.js";
+import PostDetail from "./PostDetails/PostDetail.js";
+import LayouT from "./Layout.js";
+import PrivateRouter from "./AuthRouter/PrivateRouter.js";
 import { Layout } from 'antd';
-import { BrowserRouter as Router, Route, withRouter } from "react-router-dom"
+import { BrowserRouter as Router, Route, withRouter, Switch } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { isLogin } from "../Store/actions/userActions.js"
 //css
@@ -16,7 +18,6 @@ import "antd/dist/antd.css";
 import "./Css/header.css";
 import "./Css/App.css";
 
-const height = window.innerHeight
 const { Header, Footer, Content } = Layout;
 const App = () => {
     const [Loading, setLoading] = useState(true);
@@ -33,20 +34,33 @@ const App = () => {
 
         <Router>
             {Loading ? (<div></div>) : (
-                <Layout style={{ minHeight: height }}>
-                    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }} className="header">
-                        <Navbar userc={data} />
-                    </Header>
-                    <Content className="site-layout" style={{ padding: '0', marginTop: 64 }}>
-                        {data ? (<PrivateRouter exact user={data} path="/" component={MainMenu} />) : (<Route path="/" exact component={withRouter(Carousel)} />)}
-                        <Route path="/signup" component={withRouter(signUp)} />
-                        <Route path="/login" component={withRouter(Login)} />
-                        <PrivateRouter user={data} path="/profile" component={Profile} />
-                    </Content>
-                    <Footer>
-                        <Footerr />
-                    </Footer>
-                </Layout>
+                <Switch>
+                    <Route path="/PostDetail">
+                        <PostDetail />
+                    </Route>
+                    <Route path="/signup">
+                        <LayouT data={data} >
+                            <SignUp />
+                        </LayouT>
+                    </Route>
+                    <Route path="/login">
+                        <LayouT data={data} >
+                            <Login />
+                        </LayouT>
+                    </Route>
+                    <PrivateRouter user={data} path="/profile"  >
+                        <LayouT data={data} >
+                            <Profile />
+                        </LayouT>
+                    </PrivateRouter>
+                    {data ? (<PrivateRouter exact user={data} path="/" >
+                        <LayouT data={data} >
+                            <MainMenu />
+                        </LayouT>
+                    </PrivateRouter>)
+                        :
+                        (<Route path="/" exact component={withRouter(Carousel)} />)}
+                </Switch>
             )}
         </Router>
     );
