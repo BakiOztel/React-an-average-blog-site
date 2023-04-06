@@ -20,11 +20,11 @@ exports.createPost = async (req, res, next) => {
 }
 exports.getPost = async (req, res) => {
     try {
-        const data = await PostModel.find().populate({ path: "userId", select: "userName profileImg" }).populate({ path: "comments.user_id",select:"userName" });
+        const data = await PostModel.find().populate({ path: "userId", select: "userName profileImg" }).populate({ path: "comments.user_id", select: "userName" });
 
         res.status(200).json(data);
     } catch (error) {
-        res.status(400).json({ message: "bulunamadı" });
+        res.status(400).json({ message: "not found" });
     }
 }
 
@@ -53,11 +53,11 @@ exports.changeProfileImg = async (req, res) => {
 }
 
 exports.postComment = async (req, res) => {
-    const comment={
-        user_id:req.decodedToken._id,
-        comment:req.body.message
+    const comment = {
+        user_id: req.decodedToken._id,
+        comment: req.body.message
     }
-    await PostModel.findOneAndUpdate({ _id: req.body.postId }, { $addToSet: { comments:comment } },
+    await PostModel.findOneAndUpdate({ _id: req.body.postId }, { $addToSet: { comments: comment } },
         (error, data) => {
             if (error) {
                 console.log(error);

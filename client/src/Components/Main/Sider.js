@@ -2,7 +2,7 @@ import { Layout, Menu } from 'antd';
 import {
     UserOutlined
 } from '@ant-design/icons';
-const {Sider } = Layout;
+const { Sider } = Layout;
 const Siders = () => {
 
     return (
@@ -17,7 +17,7 @@ const Siders = () => {
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
                 <Menu.Item key="11" icon={<UserOutlined />}>
-                    BURA DEĞİŞCEK
+                    {/* new version will be added */}
                 </Menu.Item>
             </Menu>
         </Sider>

@@ -26,7 +26,7 @@ exports.login = async (req, res, next) => {
       if (bcrypt.compareSync(req.body.password, user.password)) {
          const token = jwt.sign({ _id: user._id, name: user.userName }, process.env.JWT_KEY);
          res.cookie("x", token, { httpOnly: true });
-         res.status(200).json({ user: { _id:user._id,name: user.userName, realNameAndSurname: user.realNameAndSurname,profileImg:user.profileImg }, message: "giriş oldu" });
+         res.status(200).json({ user: { _id: user._id, name: user.userName, realNameAndSurname: user.realNameAndSurname, profileImg: user.profileImg }, message: "giriş oldu" });
       } else {
          res.send({ message: "wrong password" });
       }
@@ -38,14 +38,14 @@ exports.login = async (req, res, next) => {
 exports.isLoggedIn = (req, res, next) => {
    const token = req.cookies.x;
    jwt.verify(token, process.env.JWT_KEY, (error, decodedToken) => {
-      if (error){
+      if (error) {
          next([401, "Invalid token"]);
-      } 
-      userModel.findById(decodedToken._id).then((user)=>{
-         res.status(200).json({ user: { name: user.userName, realNameAndSurname: user.realNameAndSurname,profileImg:user.profileImg }});
-      }).catch(error=>{
+      }
+      userModel.findById(decodedToken._id).then((user) => {
+         res.status(200).json({ user: { name: user.userName, realNameAndSurname: user.realNameAndSurname, profileImg: user.profileImg } });
+      }).catch(error => {
          console.log(error);
-         res.status(401).json({message:"Hatalı"});
+         res.status(401).json({ message: "error" });
       });
    });
 }
@@ -53,5 +53,5 @@ exports.isLoggedIn = (req, res, next) => {
 
 exports.logout = (req, res, next) => {
    res.clearCookie("x");
-   res.status(200).json({ message: "çıkış yapıldı " });
+   res.status(200).json({ message: "logged out " });
 }

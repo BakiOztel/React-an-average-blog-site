@@ -3,13 +3,13 @@ const ProfileStat = () => {
     return (
         <div className="Profile_Stat">
             <div>
-                <span>1 gönderi</span>
+                <span>1 post</span>
             </div>
             <div>
-                <span>107 takipçi</span>
+                <span>107 followers</span>
             </div>
             <div>
-                <span>154 takip</span>
+                <span>154  follow</span>
             </div>
         </div>
     );

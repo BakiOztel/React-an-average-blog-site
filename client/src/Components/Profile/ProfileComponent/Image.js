@@ -17,10 +17,9 @@ const ProfileImg = () => {
     }
     return (
         <div className="top_img">
-            <img style={{ width: "250px", height: "250px" }} className="profile_img" src={data.profileImg ? (`http://localhost:5000/${data.profileImg}`):("https://picsum.photos/id/237/200/300")} alt="" />
+            <img style={{ width: "250px", height: "250px" }} className="profile_img" src={data.profileImg ? (`http://localhost:5000/${data.profileImg}`) : ("https://picsum.photos/id/237/200/300")} alt="" />
             <div className="upload_img">
-                {console.log(data)};
-                <Upload  multiple={false} showUploadList={false} customRequest={uploadImage} >
+                <Upload multiple={false} showUploadList={false} customRequest={uploadImage} >
                     <Button size="large" className="upload_button" ghost={true} style={{ border: "0px" }}  >Change Image</Button>
                 </Upload>
             </div>

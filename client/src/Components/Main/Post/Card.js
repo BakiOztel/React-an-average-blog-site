@@ -19,7 +19,7 @@ const Demo = ({ post }) => {
                 <span style={{ marginLeft: "20px" }}>{post.userId.userName}</span>
             </div>
             <div>
-                <Link to="/bok">
+                <Link to="">
                     <img className="Post_Img" alt="example" src={`http://localhost:5000/${post.img}`} />
                 </Link>
             </div>

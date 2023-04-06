@@ -3,7 +3,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import Dragger from "antd/lib/upload/Dragger";
 import { useDispatch } from 'react-redux';
 import { createPost } from "../../../Store/actions/postActions.js";
-import {Form,Button,Input} from "antd";
+import { Form, Button, Input } from "antd";
 const PostForm = () => {
     const formRef = useRef();
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const PostForm = () => {
 
         return e && e.fileList;
     };
-    const bok = (value) => {
+    const ff = (value) => {
         const data = new FormData();
         data.append("image-file", value.file[0].originFileObj);
         data.append("comment", value.comment);
@@ -27,7 +27,7 @@ const PostForm = () => {
     return (
         <Form
             ref={formRef}
-            onFinish={bok}
+            onFinish={ff}
             style={{ width: "1000px" }}
             name="basic"
             labelCol={{
@@ -62,7 +62,6 @@ const PostForm = () => {
                 valuePropName="fileList"
                 getValueFromEvent={normFile}
             >
-                {/* <Demo /> */}
                 <Dragger beforeUpload={() => false} name="file" multiple={true} >
                     <p className="ant-upload-drag-icon">
                         <InboxOutlined />

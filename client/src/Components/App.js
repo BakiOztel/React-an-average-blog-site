@@ -18,7 +18,7 @@ import "antd/dist/antd.css";
 import "./Css/header.css";
 import "./Css/App.css";
 
-const { Header, Footer, Content } = Layout;
+
 const App = () => {
     const [Loading, setLoading] = useState(true);
     const { data } = useSelector(state => state.userReducers);

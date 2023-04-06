@@ -1,8 +1,8 @@
 import { Form, Input, Button } from 'antd';
 import { signUp } from "../../Api/formApi.js";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-/* eslint-disable no-template-curly-in-string */
+
 const validateMessages = {
   required: '${label} is required!',
   types: {
@@ -13,21 +13,16 @@ const validateMessages = {
     range: '${label} must be between ${min} and ${max}',
   },
 };
-/* eslint-disable no-template-curly-in-string */
+
 
 
 const Register = () => {
   const history = useHistory();
   const [form] = Form.useForm();
-  // useEffect(() => {
-  //   if(data){
-  //     history.push("/");
-  //   }
-  // }, [data]);
-  const onFinish =  (value) => {
+  const onFinish = (value) => {
     try {
-        signUp(value);
-        history.push("/login");
+      signUp(value);
+      history.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +46,7 @@ const Register = () => {
     },
   };
   return (
-    <Form style={{marginTop:"200px"}}
+    <Form style={{ marginTop: "200px" }}
       onFinish={onFinish}
       {...FormItemLayout}
       scrollToFirstError
